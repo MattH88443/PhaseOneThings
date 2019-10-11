@@ -6,13 +6,13 @@ public class TabControl {
 
 
 
-    public static void addTab(String TabURL, String SongName, String Creator){
+    public static void addTab(String Artist, String Name, int UserID){
         Scanner input = new Scanner (System.in);
         try{
-            PreparedStatement ps = Main.db.prepareStatement("INSERT INTO Tabs (TabURL, SongName, Creator) VALUES (?,?,?)");
-            ps. setString(1, TabURL);
-            ps.setString(2, SongName);
-            ps.setString(3, Creator);
+            PreparedStatement ps = Main.db.prepareStatement("INSERT INTO Tabs (Artist, Name, UserID) VALUES (?,?,?)");
+            ps. setString(1, Artist);
+            ps.setString(2, Name);
+            ps.setInt(3, UserID);
         } catch (Exception exception){
             System.out.println("Database error");
         }
@@ -21,15 +21,15 @@ public class TabControl {
     public static void listTabs(){
         try {
 
-            PreparedStatement ps = Main.db.prepareStatement("SELECT TabID, TabURL, SongName, Creator FROM Tabs");
+            PreparedStatement ps = Main.db.prepareStatement("SELECT TabID, Artist, Name, UserID FROM Tabs");
 
             ResultSet results = ps.executeQuery();
             while (results.next()) {
                 int TabID = results.getInt(1);
-                String TabURL = results.getString(2);
-                String SongName = results.getString(3);
-                String Creator = results.getString(4);
-                System.out.println(TabID + ": TabURL: " + TabURL + " SongName: " + SongName + " Creator: " + Creator);
+                String Artist = results.getString(2);
+                String Name = results.getString(3);
+                int UserID = results.getInt(4);
+                System.out.println(TabID + ": Artist: " + Artist + " SongName: " + Name + " UserID: " + UserID);
 
             }
 
@@ -38,12 +38,12 @@ public class TabControl {
         }
     }
 
-    public static void updateTab(String TabURL, String SongName, String Creator, int TabID){
+    public static void updateTab(int TabID, String Artist, String Name, int UserID){
         try{
-            PreparedStatement ps = Main.db.prepareStatement("UPDATE Tabs SET TabURL = ?, SongName = ?, Creator = ? WHERE TabID = ?");
-            ps.setString(1, TabURL);
-            ps.setString(2, SongName);
-            ps.setString(3, Creator);
+            PreparedStatement ps = Main.db.prepareStatement("UPDATE Tabs SET Artist = ?, Name = ?, UserID = ? WHERE TabID = ? ");
+            ps.setString(1, Artist);
+            ps.setString(2, Name);
+            ps.setInt(3, UserID);
             ps.setInt(4, TabID);
             ps.executeUpdate();
         }catch (Exception exception){
