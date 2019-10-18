@@ -40,7 +40,7 @@ public class TabControl {
 
     public static void updateTab(int TabID, String Artist, String Name, int UserID){
         try{
-            PreparedStatement ps = Main.db.prepareStatement("UPDATE Tabs SET Artist = ?, Name = ?, UserID = ? WHERE TabID = ? ");
+            PreparedStatement ps = Main.db.prepareStatement("UPDATE Tabs SET Artist = ?, Name = ?, UserID = ? WHERE TabID = ?");
             ps.setString(1, Artist);
             ps.setString(2, Name);
             ps.setInt(3, UserID);
