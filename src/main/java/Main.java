@@ -10,7 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
         openDatabase("Database.db");
-        Scanner input = new Scanner (System.in);
+        UserControl.updateUser(2, "user765", "updated123", "test", "test");
         closeDatabase();
 
     }

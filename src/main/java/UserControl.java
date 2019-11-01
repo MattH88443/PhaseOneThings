@@ -23,16 +23,15 @@ public class UserControl {
     public static void listUsers(){
         try {
 
-            PreparedStatement ps = Main.db.prepareStatement("SELECT UserID, Username, Password, FirstName, LastName FROM Users");
+            PreparedStatement ps = Main.db.prepareStatement("SELECT UserID, Username, FirstName, LastName FROM Users");
 
             ResultSet results = ps.executeQuery();
             while (results.next()) {
                 int UserID = results.getInt(1);
                 String Username = results.getString(2);
-                String Password = results.getString(3);
-                String FirstName = results.getString(4);
-                String LastName = results.getString(5);
-                System.out.println(UserID + ": Username: " + Username + " Password: " + Password + " FirstName: " + FirstName + " LastName: " + LastName);
+                String FirstName = results.getString(3);
+                String LastName = results.getString(4);
+                System.out.println(UserID + ": Username: " + Username + " FirstName: " + FirstName + " LastName: " + LastName);
             }
 
         } catch (Exception exception) {
@@ -40,9 +39,9 @@ public class UserControl {
         }
     }
 
-    public static void updateUser(String Username, String Password, String FirstName, String LastName, int UserID){
+    public static void updateUser(int UserID, String Username, String Password, String FirstName, String LastName){
         try{
-            PreparedStatement ps = Main.db.prepareStatement("UPDATE Users SET Username = ? SET Password = ? SET FirstName = ? SET LastName = ? WHERE UserID = ?");
+            PreparedStatement ps = Main.db.prepareStatement("UPDATE Users SET Username = ?, Password = ?, FirstName = ?, LastName = ? WHERE UserID = ?");
 
             ps.setString(1, Username);
             ps.setString(2, Password);
