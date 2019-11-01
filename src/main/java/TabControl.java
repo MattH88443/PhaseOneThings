@@ -13,6 +13,7 @@ public class TabControl {
             ps. setString(1, Artist);
             ps.setString(2, Name);
             ps.setInt(3, UserID);
+            ps.executeUpdate();
         } catch (Exception exception){
             System.out.println("Database error");
         }

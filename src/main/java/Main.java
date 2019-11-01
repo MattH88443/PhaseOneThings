@@ -10,7 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
         openDatabase("Database.db");
-        UserControl.updateUser(2, "user765", "updated123", "test", "test");
+        RatingControl.addRating(5, 1, 1);
         closeDatabase();
 
     }
