@@ -10,7 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
         openDatabase("Database.db");
-        RatingControl.addRating(5, 1, 1);
+        ChordsControl.listChords();
         closeDatabase();
 
     }
