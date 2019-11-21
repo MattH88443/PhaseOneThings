@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class LinesControl {
 
-    public static void addLine(){
+    public static void addLine(int TabID, int LineID, String Lyrics){
         Scanner input = new Scanner (System.in);
         try{
             PreparedStatement ps = Main.db.prepareStatement("INSERT INTO Lines (TabID, LineID, UserID) VALUES (?,?,?)");
