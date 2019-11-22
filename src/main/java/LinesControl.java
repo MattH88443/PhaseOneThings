@@ -35,4 +35,14 @@ public class LinesControl {
             System.out.println("Database error: " + exception.getMessage());
         }
     }
+
+    public static void updateLine(){
+        try {
+            PreparedStatement ps = Main.db.prepareStatement("UPDATE Lines SET Lyrics");
+
+        } catch (Exception exception) {
+            System.out.println("Database error: " + exception.getMessage());
+        }
+    }
+
 }
