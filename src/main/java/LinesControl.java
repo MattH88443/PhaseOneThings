@@ -1,3 +1,4 @@
+import javax.sound.sampled.Line;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Scanner;
@@ -36,9 +37,12 @@ public class LinesControl {
         }
     }
 
-    public static void updateLine(){
+    public static void updateLine(String Lyrics, int LineIndex, int LineID){
         try {
-            PreparedStatement ps = Main.db.prepareStatement("UPDATE Lines SET Lyrics");
+            PreparedStatement ps = Main.db.prepareStatement("UPDATE Lines SET Lyrics = ?, LineIndex = ? WHERE LineID = ?");
+            ps.setString(1, Lyrics);
+            ps.setInt(2, LineIndex);
+            ps.setInt(3, LineID);
 
         } catch (Exception exception) {
             System.out.println("Database error: " + exception.getMessage());
