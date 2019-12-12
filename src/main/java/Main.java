@@ -10,7 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
         openDatabase("Database.db");
-        LinesControl.listLines();
+        COLControl.deleteCOL(1, 1);
         closeDatabase();
 
     }
